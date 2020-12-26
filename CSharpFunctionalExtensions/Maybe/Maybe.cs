@@ -5,12 +5,12 @@ namespace CSharpFunctionalExtensions
     [Serializable]
     public struct Maybe<T> : IEquatable<Maybe<T>>
     {
-        private readonly MaybeValueWrapper _value;
+        private readonly MaybeValueWrapper? _value;
         public T Value
         {
             get
             {
-                if (HasNoValue)
+                if (_value == null)
                     throw new InvalidOperationException();
 
                 return _value.Value;
@@ -22,12 +22,12 @@ namespace CSharpFunctionalExtensions
         public bool HasValue => _value != null;
         public bool HasNoValue => !HasValue;
 
-        private Maybe(T value)
+        private Maybe(T? value)
         {
             _value = value == null ? null : new MaybeValueWrapper(value);
         }
 
-        public static implicit operator Maybe<T>(T value)
+        public static implicit operator Maybe<T>(T? value)
         {
             if (value?.GetType() == typeof(Maybe<T>))
             {
@@ -37,7 +37,7 @@ namespace CSharpFunctionalExtensions
             return new Maybe<T>(value);
         }
 
-        public static Maybe<T> From(T obj)
+        public static Maybe<T> From(T? obj)
         {
             return new Maybe<T>(obj);
         }

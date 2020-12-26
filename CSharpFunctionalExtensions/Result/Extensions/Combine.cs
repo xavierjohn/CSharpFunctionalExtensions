@@ -6,7 +6,7 @@ namespace CSharpFunctionalExtensions
 {
     public static partial class ResultExtensions
     {
-        public static Result Combine(this IEnumerable<Result> results, string errorMessageSeparator = null)
+        public static Result Combine(this IEnumerable<Result> results, string? errorMessageSeparator = null)
             => Result.Combine(results, errorMessageSeparator);
 
         public static Result<IEnumerable<T>, E> Combine<T, E>(this IEnumerable<Result<T, E>> results)
@@ -31,7 +31,7 @@ namespace CSharpFunctionalExtensions
                 : Result.Failure<IEnumerable<T>, E>(result.Error);
         }
 
-        public static Result<IEnumerable<T>> Combine<T>(this IEnumerable<Result<T>> results, string errorMessageSeparator = null)
+        public static Result<IEnumerable<T>> Combine<T>(this IEnumerable<Result<T>> results, string? errorMessageSeparator = null)
         {
             results = results.ToList();
             Result result = Result.Combine(results, errorMessageSeparator);
@@ -61,7 +61,7 @@ namespace CSharpFunctionalExtensions
         }
 
         public static Result<K> Combine<T, K>(this IEnumerable<Result<T>> results, Func<IEnumerable<T>, K> composer,
-            string errorMessageSeparator = null)
+            string? errorMessageSeparator = null)
         {
             Result<IEnumerable<T>> result = results.Combine(errorMessageSeparator);
 

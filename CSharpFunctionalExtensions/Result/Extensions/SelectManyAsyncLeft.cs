@@ -11,7 +11,7 @@ namespace CSharpFunctionalExtensions
         public static async Task<Result<TR>> SelectMany<T, TK, TR>(
             this Task<Result<T>> resultTask,
             Func<T, Result<TK>> func,
-            Func<T, TK, TR> project)
+            Func<T, TK, TR> project) where TR : class
         {
             Result<T> result = await resultTask.DefaultAwait();
             return result.SelectMany(func, project);

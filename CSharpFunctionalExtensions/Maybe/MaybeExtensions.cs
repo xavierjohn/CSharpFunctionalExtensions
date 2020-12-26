@@ -22,12 +22,12 @@ namespace CSharpFunctionalExtensions
             return Result.Success<T, E>(maybe.Value);
         }
 
-        public static T Unwrap<T>(this Maybe<T> maybe, T defaultValue = default(T))
+        public static T? Unwrap<T>(this Maybe<T> maybe, T defaultValue = default(T))
         {
             return maybe.Unwrap(x => x, defaultValue);
         }
 
-        public static K Unwrap<T, K>(this Maybe<T> maybe, Func<T, K> selector, K defaultValue = default(K))
+        public static K? Unwrap<T, K>(this Maybe<T> maybe, Func<T, K> selector, K defaultValue = default(K))
         {
             if (maybe.HasValue)
                 return selector(maybe.Value);
@@ -35,7 +35,7 @@ namespace CSharpFunctionalExtensions
             return defaultValue;
         }
 
-        public static List<T> ToList<T>(this Maybe<T> maybe)
+        public static List<T>? ToList<T>(this Maybe<T> maybe)
         {
             return maybe.Unwrap(value => new List<T> {value}, new List<T>());
         }

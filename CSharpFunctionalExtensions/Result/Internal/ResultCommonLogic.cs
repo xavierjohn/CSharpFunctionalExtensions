@@ -6,12 +6,12 @@ namespace CSharpFunctionalExtensions.Internal
 {
     internal readonly struct ResultCommonLogic<E>
     {
-        private readonly E _error;
+        private readonly E? _error;
         public bool IsFailure { get; }
         public bool IsSuccess => !IsFailure;
-        public E Error => IsFailure ? _error : throw new ResultSuccessException();
+        public E? Error => IsFailure ? _error : throw new ResultSuccessException();
 
-        public ResultCommonLogic(bool isFailure, E error)
+        public ResultCommonLogic(bool isFailure, E? error)
         {
             if (isFailure)
             {
@@ -20,7 +20,7 @@ namespace CSharpFunctionalExtensions.Internal
             }
             else
             {
-                if (!EqualityComparer<E>.Default.Equals(error, default))
+                if (!EqualityComparer<E?>.Default.Equals(error, default))
                     throw new ArgumentException(Result.Messages.ErrorObjectIsProvidedForSuccess, nameof(error));
             }
 

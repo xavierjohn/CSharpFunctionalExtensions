@@ -15,7 +15,7 @@ namespace CSharpFunctionalExtensions
         ///     A string that is used to separate any concatenated error messages. If omitted, the default <see cref="Result.ErrorMessagesSeparator" /> is used.</param>
         /// <returns>
         ///     A Result that is a success when all the input <paramref name="results"/> are also successes.</returns>
-        public static Result Combine(IEnumerable<Result> results, string errorMessagesSeparator = null)
+        public static Result Combine(IEnumerable<Result> results, string? errorMessagesSeparator = null)
         {
             List<Result> failedResults = results.Where(x => x.IsFailure).ToList();
 
@@ -35,7 +35,7 @@ namespace CSharpFunctionalExtensions
         ///     A string that is used to separate any concatenated error messages. If omitted, the default <see cref="Result.ErrorMessagesSeparator" /> is used.</param>
         /// <returns>
         ///     A Result that is a success when all the input <paramref name="results"/> are also successes.</returns>
-        public static Result Combine<T>(IEnumerable<Result<T>> results, string errorMessagesSeparator = null)
+        public static Result Combine<T>(IEnumerable<Result<T>> results, string? errorMessagesSeparator = null)
         {
             IEnumerable<Result> untyped = results.Select(result => (Result)result);
             return Combine(untyped, errorMessagesSeparator);

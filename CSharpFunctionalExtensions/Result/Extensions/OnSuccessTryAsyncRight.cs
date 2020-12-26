@@ -6,7 +6,7 @@ namespace CSharpFunctionalExtensions
     public static partial class ResultExtensions
     {
         public static async Task<Result> OnSuccessTry(this Result result, Func<Task> func,
-            Func<Exception, string> errorHandler = null)
+            Func<Exception, string>? errorHandler = null)
         {
             return result.IsFailure
                ? result
@@ -30,7 +30,7 @@ namespace CSharpFunctionalExtensions
         }
 
         public static async Task<Result<T>> OnSuccessTry<T>(this Result result, Func<Task<T>> func,
-            Func<Exception, string> errorHandler = null)
+            Func<Exception, string>? errorHandler = null)
         {
             return result.IsFailure
                ? Result.Failure<T>(result.Error)
@@ -38,7 +38,7 @@ namespace CSharpFunctionalExtensions
         }
 
         public static async Task<Result> OnSuccessTry<T>(this Result<T> result, Func<T, Task> func,
-            Func<Exception, string> errorHandler = null)
+            Func<Exception, string>? errorHandler = null)
         {
             return result.IsFailure
                ? Result.Failure(result.Error)
@@ -46,7 +46,7 @@ namespace CSharpFunctionalExtensions
         }
 
         public static async Task<Result<K>> OnSuccessTry<T, K>(this Result<T> result, Func<T, Task<K>> func,
-            Func<Exception, string> errorHandler = null)
+            Func<Exception, string>? errorHandler = null)
         {
             return result.IsFailure
                ? Result.Failure<K>(result.Error)
