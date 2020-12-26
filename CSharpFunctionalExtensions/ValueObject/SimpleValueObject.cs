@@ -13,12 +13,12 @@ namespace CSharpFunctionalExtensions
             Value = value;
         }
 
-        protected override IEnumerable<object> GetEqualityComponents()
+        protected override IEnumerable<object?> GetEqualityComponents()
         {
             yield return Value;
         }
 
-        public override string ToString()
+        public override string? ToString()
         {
             return Value?.ToString();
         }

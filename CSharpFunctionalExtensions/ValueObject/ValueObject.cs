@@ -63,7 +63,7 @@ namespace CSharpFunctionalExtensions
     {
         private int? _cachedHashCode;
 
-        protected abstract IEnumerable<object> GetEqualityComponents();
+        protected abstract IEnumerable<object?> GetEqualityComponents();
 
         public override bool Equals(object obj)
         {
