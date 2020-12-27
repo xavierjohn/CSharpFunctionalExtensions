@@ -8,7 +8,7 @@
 
     public interface IValue<out T>
     {
-        T Value { get; }
+        T? Value { get; }
     }
 
     public interface IError<out E>

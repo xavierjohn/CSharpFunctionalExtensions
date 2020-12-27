@@ -38,7 +38,7 @@ namespace CSharpFunctionalExtensions
             => Bind(resultTask, func);
 
         [Obsolete("Use Tap() instead.")]
-        public static Task<Result<T>> OnSuccess<T>(this Task<Result<T>> resultTask, Action<T> action)
+        public static Task<Result<T>> OnSuccess<T>(this Task<Result<T>> resultTask, Action<T?> action)
             => Tap(resultTask, action);
 
         [Obsolete("Use Tap() instead.")]

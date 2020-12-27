@@ -19,14 +19,14 @@ namespace CSharpFunctionalExtensions
             return await result.OnSuccessTry(func, errorHandler);
         }
 
-        public static async Task<Result> OnSuccessTry<T>(this Task<Result<T>> task, Func<T, Task> func,
+        public static async Task<Result> OnSuccessTry<T>(this Task<Result<T>> task, Func<T?, Task> func,
             Func<Exception, string>? errorHandler = null)
         {
             var result = await task.DefaultAwait();
             return await result.OnSuccessTry(func, errorHandler);
         }
 
-        public static async Task<Result<K>> OnSuccessTry<T, K>(this Task<Result<T>> task, Func<T, Task<K>> func,
+        public static async Task<Result<K>> OnSuccessTry<T, K>(this Task<Result<T>> task, Func<T?, Task<K>> func,
             Func<Exception, string>? errorHandler = null)
         {
             var result = await task.DefaultAwait();

@@ -12,10 +12,10 @@ namespace CSharpFunctionalExtensions
         public bool IsSuccess => _logic.IsSuccess;
         public string Error => _logic.Error;
 
-        private readonly T _value;
-        public T Value => IsSuccess ? _value : throw new ResultFailureException(Error);
+        private readonly T? _value;
+        public T? Value => IsSuccess ? _value : throw new ResultFailureException(Error);
 
-        internal Result(bool isFailure, string error, T value)
+        internal Result(bool isFailure, string? error, T? value)
         {
             _logic = new ResultCommonLogic<string>(isFailure, error);
             _value = value;
@@ -30,14 +30,14 @@ namespace CSharpFunctionalExtensions
         void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context)
             => _logic.GetObjectData(info, this);
 
-        public static implicit operator Result<T>(T value)
+        public static implicit operator Result<T?>(T? value)
         {
             if (value is IResult<T> result)
             {
                 string? resultError = result.IsFailure ? result.Error : default;
-                T resultValue = result.IsSuccess ? result.Value : default;
+                T? resultValue = result.IsSuccess ? result.Value : default;
 
-                return new Result<T>(result.IsFailure, resultError, resultValue);
+                return new Result<T?>(result.IsFailure, resultError, resultValue);
             }
 
             return Result.Success(value);

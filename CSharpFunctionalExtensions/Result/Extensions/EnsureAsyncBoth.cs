@@ -8,7 +8,7 @@ namespace CSharpFunctionalExtensions
         /// <summary>
         ///     Returns a new failure result if the predicate is false. Otherwise returns the starting result.
         /// </summary>
-        public static async Task<Result<T>> Ensure<T>(this Task<Result<T>> resultTask, Func<T, Task<bool>> predicate, string errorMessage)
+        public static async Task<Result<T>> Ensure<T>(this Task<Result<T>> resultTask, Func<T?, Task<bool>> predicate, string errorMessage)
         {
             Result<T> result = await resultTask.DefaultAwait();
 
@@ -24,7 +24,7 @@ namespace CSharpFunctionalExtensions
         /// <summary>
         ///     Returns a new failure result if the predicate is false. Otherwise returns the starting result.
         /// </summary>
-        public static async Task<Result<T, E>> Ensure<T, E>(this Task<Result<T, E>> resultTask, Func<T, Task<bool>> predicate, E error)
+        public static async Task<Result<T, E>> Ensure<T, E>(this Task<Result<T, E>> resultTask, Func<T?, Task<bool>> predicate, E error)
         {
             Result<T, E> result = await resultTask.DefaultAwait();
 

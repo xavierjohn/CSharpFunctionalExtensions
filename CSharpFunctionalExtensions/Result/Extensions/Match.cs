@@ -25,7 +25,7 @@ namespace CSharpFunctionalExtensions
                 : onFailure(result.Error);
         }
 
-        public static void Match<T, E>(this Result<T, E> result, Action<T> onSuccess, Action<E> onFailure)
+        public static void Match<T, E>(this Result<T, E> result, Action<T?> onSuccess, Action<E> onFailure)
         {
             if (result.IsSuccess)
                 onSuccess(result.Value);
@@ -33,7 +33,7 @@ namespace CSharpFunctionalExtensions
                 onFailure(result.Error);
         }
 
-        public static void Match<T>(this Result<T> result, Action<T> onSuccess, Action<string> onFailure)
+        public static void Match<T>(this Result<T> result, Action<T?> onSuccess, Action<string> onFailure)
         {
             if (result.IsSuccess)
                 onSuccess(result.Value);

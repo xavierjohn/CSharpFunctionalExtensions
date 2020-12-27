@@ -34,7 +34,7 @@ namespace CSharpFunctionalExtensions
         /// <summary>
         ///     Executes the given action if the calling result is a success. Returns the calling result.
         /// </summary>
-        public static async Task<Result<T>> Tap<T>(this Task<Result<T>> resultTask, Func<T, Task> func)
+        public static async Task<Result<T>> Tap<T>(this Task<Result<T>> resultTask, Func<T?, Task> func)
         {
             Result<T> result = await resultTask.DefaultAwait();
 

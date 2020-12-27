@@ -12,10 +12,10 @@ namespace CSharpFunctionalExtensions
         public bool IsSuccess => _logic.IsSuccess;
         public E Error => _logic.Error;
 
-        private readonly T _value;
-        public T Value => IsSuccess ? _value : throw new ResultFailureException<E>(Error);
+        private readonly T? _value;
+        public T? Value => IsSuccess ? _value : throw new ResultFailureException<E>(Error);
 
-        internal Result(bool isFailure, E error, T value)
+        internal Result(bool isFailure, E? error, T? value)
         {
             _logic = new ResultCommonLogic<E>(isFailure, error);
             _value = value;

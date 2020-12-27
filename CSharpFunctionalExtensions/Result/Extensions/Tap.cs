@@ -29,7 +29,7 @@ namespace CSharpFunctionalExtensions
         /// <summary>
         ///     Executes the given action if the calling result is a success. Returns the calling result.
         /// </summary>
-        public static Result<T> Tap<T>(this Result<T> result, Action<T> action)
+        public static Result<T> Tap<T>(this Result<T> result, Action<T?> action)
         {
             if (result.IsSuccess)
                 action(result.Value);
@@ -51,7 +51,7 @@ namespace CSharpFunctionalExtensions
         /// <summary>
         ///     Executes the given action if the calling result is a success. Returns the calling result.
         /// </summary>
-        public static Result<T, E> Tap<T, E>(this Result<T, E> result, Action<T> action)
+        public static Result<T, E> Tap<T, E>(this Result<T, E> result, Action<T?> action)
         {
             if (result.IsSuccess)
                 action(result.Value);

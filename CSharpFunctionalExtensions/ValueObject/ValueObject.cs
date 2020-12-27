@@ -105,8 +105,8 @@ namespace CSharpFunctionalExtensions
 
             var other = (ValueObject)obj;
 
-            object[] components = GetEqualityComponents().ToArray();
-            object[] otherComponents = other.GetEqualityComponents().ToArray();
+            object?[] components = GetEqualityComponents().ToArray();
+            object?[] otherComponents = other.GetEqualityComponents().ToArray();
 
             for (int i = 0; i < components.Length; i++)
             {
@@ -118,7 +118,7 @@ namespace CSharpFunctionalExtensions
             return 0;
         }
 
-        private int CompareComponents(object object1, object object2)
+        private int CompareComponents(object? object1, object? object2)
         {
             if (object1 is null && object2 is null)
                 return 0;

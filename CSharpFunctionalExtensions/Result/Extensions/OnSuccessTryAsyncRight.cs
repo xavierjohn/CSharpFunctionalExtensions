@@ -13,7 +13,7 @@ namespace CSharpFunctionalExtensions
                : await Result.Try(func, errorHandler);
         }
 
-        public static async Task OnSuccessTry<T>(this Result<T> result, Func<T, Task> func)
+        public static async Task OnSuccessTry<T>(this Result<T> result, Func<T?, Task> func)
         {
             if (result.IsSuccess)
             {
@@ -21,7 +21,7 @@ namespace CSharpFunctionalExtensions
             }
         }
 
-        public static async Task OnSuccessTry<T, E>(this Result<T, E> result, Func<T, Task> func)
+        public static async Task OnSuccessTry<T, E>(this Result<T, E> result, Func<T?, Task> func)
         {
             if (result.IsSuccess)
             {
@@ -37,7 +37,7 @@ namespace CSharpFunctionalExtensions
                : await Result.Try(func, errorHandler);
         }
 
-        public static async Task<Result> OnSuccessTry<T>(this Result<T> result, Func<T, Task> func,
+        public static async Task<Result> OnSuccessTry<T>(this Result<T> result, Func<T?, Task> func,
             Func<Exception, string>? errorHandler = null)
         {
             return result.IsFailure
@@ -45,7 +45,7 @@ namespace CSharpFunctionalExtensions
                : await Result.Try(async () => await func(result.Value), errorHandler);
         }
 
-        public static async Task<Result<K>> OnSuccessTry<T, K>(this Result<T> result, Func<T, Task<K>> func,
+        public static async Task<Result<K>> OnSuccessTry<T, K>(this Result<T> result, Func<T?, Task<K>> func,
             Func<Exception, string>? errorHandler = null)
         {
             return result.IsFailure

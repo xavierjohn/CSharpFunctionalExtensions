@@ -63,7 +63,7 @@ namespace CSharpFunctionalExtensions
         /// <summary>
         ///     Executes the given action if the calling result is a success and condition is true. Returns the calling result.
         /// </summary>
-        public static async Task<Result<T>> TapIf<T>(this Task<Result<T>> resultTask, Func<T, bool> predicate, Func<Task> func)
+        public static async Task<Result<T>> TapIf<T>(this Task<Result<T>> resultTask, Func<T?, bool> predicate, Func<Task> func)
         {
             Result<T> result = await resultTask.DefaultAwait();
 
@@ -76,7 +76,7 @@ namespace CSharpFunctionalExtensions
         /// <summary>
         ///     Executes the given action if the calling result is a success and condition is true. Returns the calling result.
         /// </summary>
-        public static async Task<Result<T>> TapIf<T>(this Task<Result<T>> resultTask, Func<T, bool> predicate, Func<T, Task> func)
+        public static async Task<Result<T>> TapIf<T>(this Task<Result<T>> resultTask, Func<T?, bool> predicate, Func<T, Task> func)
         {
             Result<T> result = await resultTask.DefaultAwait();
 
@@ -89,7 +89,7 @@ namespace CSharpFunctionalExtensions
         /// <summary>
         ///     Executes the given action if the calling result is a success and condition is true. Returns the calling result.
         /// </summary>
-        public static async Task<Result<T, E>> TapIf<T, E>(this Task<Result<T, E>> resultTask, Func<T, bool> predicate, Func<Task> func)
+        public static async Task<Result<T, E>> TapIf<T, E>(this Task<Result<T, E>> resultTask, Func<T?, bool> predicate, Func<Task> func)
         {
             Result<T, E> result = await resultTask.DefaultAwait();
 
@@ -102,7 +102,7 @@ namespace CSharpFunctionalExtensions
         /// <summary>
         ///     Executes the given action if the calling result is a success and condition is true. Returns the calling result.
         /// </summary>
-        public static async Task<Result<T, E>> TapIf<T, E>(this Task<Result<T, E>> resultTask, Func<T, bool> predicate, Func<T, Task> func)
+        public static async Task<Result<T, E>> TapIf<T, E>(this Task<Result<T, E>> resultTask, Func<T?, bool> predicate, Func<T, Task> func)
         {
             Result<T, E> result = await resultTask.DefaultAwait();
 

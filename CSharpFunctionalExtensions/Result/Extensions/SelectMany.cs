@@ -10,7 +10,7 @@ namespace CSharpFunctionalExtensions
         public static Result<TR> SelectMany<T, TK, TR>(
             this Result<T> result,
             Func<T, Result<TK>> func,
-            Func<T, TK, TR> project)
+            Func<T?, TK, TR> project)
         {
             return result
                 .Bind(func)
@@ -23,7 +23,7 @@ namespace CSharpFunctionalExtensions
         public static Result<TR, TE> SelectMany<T, TK, TE, TR>(
             this Result<T, TE> result,
             Func<T, Result<TK, TE>> func,
-            Func<T, TK, TR> project)
+            Func<T?, TK, TR> project)
         {
             return result
                 .Bind(func)

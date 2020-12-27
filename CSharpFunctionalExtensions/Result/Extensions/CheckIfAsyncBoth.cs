@@ -30,7 +30,7 @@ namespace CSharpFunctionalExtensions
         }
 
         
-        public static async Task<Result<T>> CheckIf<T>(this Task<Result<T>> resultTask, Func<T, bool> predicate, Func<T, Task<Result>> func)
+        public static async Task<Result<T>> CheckIf<T>(this Task<Result<T>> resultTask, Func<T?, bool> predicate, Func<T, Task<Result>> func)
         {
             Result<T> result = await resultTask.DefaultAwait();
 
@@ -40,7 +40,7 @@ namespace CSharpFunctionalExtensions
                 return result;
         }
 
-        public static async Task<Result<T>> CheckIf<T, K>(this Task<Result<T>> resultTask, Func<T, bool> predicate, Func<T, Task<Result<K>>> func)
+        public static async Task<Result<T>> CheckIf<T, K>(this Task<Result<T>> resultTask, Func<T?, bool> predicate, Func<T, Task<Result<K>>> func)
         {
             Result<T> result = await resultTask.DefaultAwait();
 
@@ -50,7 +50,7 @@ namespace CSharpFunctionalExtensions
                 return result;
         }
 
-        public static async Task<Result<T, E>> CheckIf<T, K, E>(this Task<Result<T, E>> resultTask, Func<T, bool> predicate, Func<T, Task<Result<K, E>>> func)
+        public static async Task<Result<T, E>> CheckIf<T, K, E>(this Task<Result<T, E>> resultTask, Func<T?, bool> predicate, Func<T, Task<Result<K, E>>> func)
         {
             Result<T, E> result = await resultTask.DefaultAwait();
 
