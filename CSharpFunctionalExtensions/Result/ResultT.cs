@@ -34,7 +34,7 @@ namespace CSharpFunctionalExtensions
         {
             if (value is IResult<T> result)
             {
-                string resultError = result.IsFailure ? result.Error : default;
+                string? resultError = result.IsFailure ? result.Error : default;
                 T resultValue = result.IsSuccess ? result.Value : default;
 
                 return new Result<T>(result.IsFailure, resultError, resultValue);

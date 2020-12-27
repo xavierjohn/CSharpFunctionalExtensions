@@ -9,7 +9,16 @@ namespace CSharpFunctionalExtensions.Internal
         private readonly E? _error;
         public bool IsFailure { get; }
         public bool IsSuccess => !IsFailure;
-        public E? Error => IsFailure ? _error : throw new ResultSuccessException();
+        public E Error
+        {
+            get
+            {
+                if (IsFailure && _error != null)
+                    return _error;
+
+                throw new ResultSuccessException();
+            }
+        }
 
         public ResultCommonLogic(bool isFailure, E? error)
         {

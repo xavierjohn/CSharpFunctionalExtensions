@@ -10,7 +10,7 @@ namespace CSharpFunctionalExtensions
         public static Result<TR> SelectMany<T, TK, TR>(
             this Result<T> result,
             Func<T, Result<TK>> func,
-            Func<T, TK, TR> project) where TR : class
+            Func<T, TK, TR> project)
         {
             return result
                 .Bind(func)
